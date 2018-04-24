@@ -1,7 +1,22 @@
 #!/bin/bash
 
-#installing git
-apt install git
+#updateing environment
+apt-get update
 
-#installing php dependencies
-apt install php7.2-curl php7.2-gd php7.2-json php7.2-mbstring php7.2-mysql php7.2-opcache php7.2-readline php7.2-xml php7.2-zip
+#installing essencial dependencies
+apt-get install -y libxml2-dev libedit-dev curl libpng-dev
+
+#installing git
+apt-get install -y git
+
+#installing PHP required extensions
+docker-php-ext-install gd &&
+docker-php-ext-install json &&
+docker-php-ext-install mbstring &&
+docker-php-ext-install opcache &&
+docker-php-ext-install readline &&
+docker-php-ext-install xml &&
+docker-php-ext-install zip &&
+docker-php-ext-install pdo &&
+docker-php-ext-install pdo_mysql &&
+docker-php-ext-install mysqli
