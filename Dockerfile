@@ -1,4 +1,10 @@
-FROM php:7.2-apache
+FROM php:5.6
 
-ADD build_environment.sh /usr/bin/build_environment.sh
-RUN build_environment.sh
+RUN mkdir -p /app/
+
+COPY ./scripts/ /usr/bin
+COPY ./settings/ /app/environment/settings/php/
+
+RUN build.sh
+
+WORKDIR /app/
